@@ -10,11 +10,9 @@
 int main()
 {
     unsigned long tien = MONEY;
-    unsigned long temp = tien;
-
     printf("Nhap so tien: ");
-    // scanf("%ld", &tien);
-    printf("%ld \r\n", tien);
+    scanf("%ld", &tien);
+    unsigned long temp = tien;
     
     int namTram = (int)tien / T_500k;
     tien = tien % T_500k;
@@ -31,7 +29,7 @@ int main()
     printf(" %d to 200 000\r\n", haiTram);
     printf(" %d to 100 000\r\n", motTram);
     printf(" %d to  50 000\r\n", namMuoi);
-    printf(" %d tien du \r\n", tienDu);
+    printf(" %ld tien du \r\n", tienDu);
 
     return 0;
 }
