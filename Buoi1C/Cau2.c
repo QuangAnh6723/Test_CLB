@@ -5,14 +5,13 @@
 #define T_100k  100000
 #define T_50k   50000
 
-#define MONEY   4880000
+#define MONEY   4886000
 
 int main()
 {
     unsigned long tien = MONEY;
     printf("Nhap so tien: ");
     scanf("%ld", &tien);
-    unsigned long temp = tien;
     
     int namTram = (int)tien / T_500k;
     tien = tien % T_500k;
@@ -23,13 +22,12 @@ int main()
     int namMuoi = (int)tien/ T_50k;
     tien = tien % T_50k;
 
-    unsigned long tienDu = temp - ( namTram*T_500k + haiTram * T_200k + motTram * T_100k + namMuoi * T_50k);
     printf("Tong cac to menh gia: \r\n");
     printf(" %d to 500 000\r\n", namTram);
     printf(" %d to 200 000\r\n", haiTram);
     printf(" %d to 100 000\r\n", motTram);
     printf(" %d to  50 000\r\n", namMuoi);
-    printf(" %ld tien du \r\n", tienDu);
+    printf(" %ld tien du \r\n", tien);
 
     return 0;
 }
