@@ -3,15 +3,15 @@
 
 typedef enum {
     KhongNhuan, Nhuan
-}nam_Nhuan;
+}nam_Nhuan_t;
 
 typedef enum 
 {
     KhongHopLe = 0,
     HopLe = 1,
-} KiemTra;
+} KiemTra_t;
 
-nam_Nhuan check_namNhuan(int nam)
+nam_Nhuan_t check_namNhuan(int nam)
 {
     if((nam % 4 == 0 && nam % 100 != 0) || (nam % 400 == 0))
     {
@@ -20,7 +20,7 @@ nam_Nhuan check_namNhuan(int nam)
     return KhongNhuan;
 }
 
-KiemTra check_date(int ngay, int thang, int nam)
+KiemTra_t check_date(int ngay, int thang, int nam)
 {
     if(thang < 1 && thang > 12){
         return KhongHopLe;
@@ -201,9 +201,12 @@ int main()
         break;
     }
 
-
     return 0;
 }
+
+
+
+
 
 
 
