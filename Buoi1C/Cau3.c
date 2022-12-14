@@ -1,8 +1,15 @@
+//Tim thu dua tren thuat toan Doomsday
 #include<stdio.h>
 
 typedef enum {
     KhongNhuan, Nhuan
 }nam_Nhuan;
+
+typedef enum 
+{
+    KhongHopLe = 0,
+    HopLe = 1,
+} KiemTra;
 
 nam_Nhuan check_namNhuan(int nam)
 {
@@ -13,19 +20,71 @@ nam_Nhuan check_namNhuan(int nam)
     return KhongNhuan;
 }
 
+KiemTra check_date(int ngay, int thang, int nam)
+{
+    if(thang < 1 && thang > 12){
+        return KhongHopLe;
+    }
+    if (ngay < 0)
+    {
+        return KhongHopLe;
+    }
+    switch (thang)
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        if(ngay > 31){
+            return KhongHopLe;
+        }
+        break;
+    case 2:
+        if(check_namNhuan(nam) == Nhuan && (ngay > 29)){
+            return KhongHopLe;
+        } 
+        else if(check_namNhuan(nam) != Nhuan && (ngay > 28))
+        {
+            return KhongHopLe;
+        }
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        if(ngay > 30){
+            return KhongHopLe;
+        }
+        break;
+    default:
+        return KhongHopLe;
+        break;
+    }
+    return HopLe;  
+}
+
+
 int main()
 {
     int ngay, thang, nam;
-    printf("Nhap Ngay: ");
-    scanf("%d", &ngay);
-    printf("Nhap Thang: ");
-    scanf("%d", &thang);
-    printf("Nhap Nam: ");
-    scanf("%d", &nam);
+    do{
+        printf("Nhap Ngay: ");
+        scanf("%d", &ngay);
+        printf("Nhap Thang: ");
+        scanf("%d", &thang);
+        printf("Nhap Nam: ");
+        scanf("%d", &nam);
+        if(check_date(ngay, thang, nam) == HopLe)
+        {
+            break;
+        }
+        printf("\t\tNhap lai!!!\r\n");
+    }
+    while (1);
 
-    check_namNhuan(nam);
     int temp = nam / 100;
-
     int AD;
     switch (temp)
     {
