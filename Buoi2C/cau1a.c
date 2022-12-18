@@ -48,9 +48,10 @@ void tangDan(int arr[], int size)
 
 int main()
 {
-    int a[10] = {0};
-    nhap(a, SIZE(a));
     // int a[] = {10, 10, 10, 9, 8, 6, 15, 20, 30, 26, 1, 6 , 7};
+    int a[10] = {0};
+    printf("Nhap mang int: \r\n");
+    nhap(a, SIZE(a));
     printf("Mang chua duoc sap xep la: \r\n");
     xuat(a, SIZE(a));
     printf("Mang da dc sap xep tang dan la: \r\n");

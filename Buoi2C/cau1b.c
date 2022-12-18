@@ -47,15 +47,16 @@ void giamDan(float arr[], float size)
 
 int main()
 {
-    // float a[10] = {0};
-    float a[] = {1.2, 5.6, 9.3, 4.5, 2.3, 6.7, 8.9, 10.5, 16.9, 20.1, 100, 9.3, 9.3, 6.7};
-    // nhap(a, SIZE(a));
+    float a[10] = {0};
+    // float a[] = {1.2, 5.6, 9.3, 4.5, 2.3, 6.7, 8.9, 10.5, 16.9, 20.1, 100, 9.3, 9.3, 6.7};
+    printf("Nhap mang float: \r\n");
+    nhap(a, SIZE(a));
     printf("Mang chua duoc sap xep\r\n");
     xuat(a, SIZE(a));
-    printf("Mang da duoc sap xep\r\n");
+    printf("Mang da duoc sap xep giam dan\r\n");
     giamDan(a, SIZE(a));
     xuat(a, SIZE(a));
-    
+
     return 0;
 }
 
