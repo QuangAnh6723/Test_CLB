@@ -11,6 +11,7 @@ void xuat_matrix(int matrix[][2], int col, int row)
         printf("\r\n");
     }
 }
+
 void nhap(int matrix[2][2])
 {
     for (int i = 0; i < 2; i++)
@@ -42,8 +43,9 @@ int det_2x2(int arr[2][2])
 
 int main()
 { 
-    int maX[2][2] = {4,2,3,9};
-    printf("Nhap ma tran 2x2: \r\n");
+    // int maX[2][2] = {4,2,3,9};
+    int maX[2][2] = {0};
+    printf("\nNhap ma tran 2x2: \r\n");
     nhap(maX);
     printf("ma tran vua nhap la: \r\n"); 
     xuat_matrix(maX, 2, 2);

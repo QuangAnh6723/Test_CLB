@@ -3,7 +3,6 @@
 
 #define SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 
-
 void nhap_fl(float arr[], int size)
 {
     printf("---------------\r\n");
@@ -62,7 +61,7 @@ int main()
     // float a[] = {1.2, 5.6, 9.3, 4.5, 2.3, 6.7, 8.9, 10.5, 16.9, 20.1, 100, 9.3, 9.3, 6.7};
     // float a[] = {3.3,4.4,9.9, 5.5, -8.9, 11.1};
     float a[5] = {0};
-    printf("Nhap mang float: \r\n");
+    printf("\nNhap mang float: \r\n");
     nhap_fl(a, SIZE(a));
     printf("Mang vua nhap la: \r\n");
     xuat_fl(a, SIZE(a));
@@ -75,7 +74,7 @@ int main()
     else if (tich < 0)
     {
         thaypt(a, SIZE(a));
-        printf("Mang sau khi da dc thay la: \r\n");
+        printf("\nMang sau khi da dc thay la: \r\n");
         xuat_fl(a, SIZE(a));  
     }
 

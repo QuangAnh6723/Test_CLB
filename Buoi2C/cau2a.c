@@ -14,6 +14,7 @@ void matrix_init(int matrix[][5], int col, int row)
 
 void xuat_matrix(int matrix[][5], int col, int row)
 {
+    printf("\n---------------------\r\n");
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
@@ -22,8 +23,8 @@ void xuat_matrix(int matrix[][5], int col, int row)
         }  
         printf("\r\n");
     }
+    printf("---------------------\r\n");
 }
-
 
 int main()
 {

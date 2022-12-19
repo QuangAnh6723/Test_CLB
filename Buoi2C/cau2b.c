@@ -36,6 +36,7 @@ void matrix_init_chan(int matrix[][5], int col, int row)
 
 void xuat_matrix(int matrix[][5], int col, int row)
 {
+    printf("---------------------\r\n");
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
@@ -82,7 +83,7 @@ int main()
     // matrix_init_rand(matrix, 5, 5);
     // matrix_init_le(matrix, 5, 5);
     matrix_init_chan(matrix, 5, 5);
-
+    // matrix[0][0] = 1;
     xuat_matrix(matrix, 5, 5);
     int x = tim_so_chan_dau_tien(matrix,5,5);
     if( x != -1){

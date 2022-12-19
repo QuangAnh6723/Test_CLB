@@ -119,10 +119,8 @@ void tangDan_int(int arr[], int size)
             {
                 swap_int(&arr[i], &arr[j]);
             }   
-        }
-        
+        }  
     }
-    
 }
 
 void giamDan_fl(float arr[], int size)
@@ -136,7 +134,6 @@ void giamDan_fl(float arr[], int size)
                 swap_fl(&arr[i], &arr[j]);
             }   
         }
-        
     }
 }
 
@@ -191,7 +188,7 @@ int main()
     int n1;
     printf("Nhap so thu n1: ");
     scanf("%d", &n1);
-    printf("Phan tu lon thu %d  trong mang float la: %.2f \r\n", n,arr_fl_cpy[n1-1]);
+    printf("Phan tu lon thu %d trong mang float la: %.2f \r\n", n1, arr_fl_cpy[n1-1]);
 
     return 0;
 }

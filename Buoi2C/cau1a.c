@@ -4,7 +4,7 @@
 
 void nhap(int arr[], int size)
 {
-    printf("\r\n---------------\r\n");
+    printf("--------------------\r\n");
     for (int i = 0; i < size; i++)
     {
         printf("Nhap phan tu thu %d: ", i);
@@ -41,23 +41,21 @@ void tangDan(int arr[], int size)
                 swap(&arr[i], &arr[j]);
             }   
         }
-        
     }
-    
 }
 
 int main()
 {
     // int a[] = {10, 10, 10, 9, 8, 6, 15, 20, 30, 26, 1, 6 , 7};
     int a[10] = {0};
-    printf("Nhap mang int: \r\n");
+    printf("\n\nNhap mang int: \r\n");
     nhap(a, SIZE(a));
     printf("Mang chua duoc sap xep la: \r\n");
     xuat(a, SIZE(a));
     printf("Mang da dc sap xep tang dan la: \r\n");
     tangDan(a, SIZE(a));
     xuat(a, SIZE(a));
-    
+    printf("\n");
     return 0;
 }
 
