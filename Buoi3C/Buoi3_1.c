@@ -1,10 +1,8 @@
-#pragma warning(disable : 4996)
 #include<stdio.h>
 #include<string.h>
 #include<Windows.h>
 
 #define MAX 10
-#define SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 
 typedef enum {
 	rot = 0, dau = 1, khongCo = 3
@@ -171,11 +169,11 @@ void xuat_1_hang(HocSinh_t hs)
     }
 }
 
-void xuat_bang(HocSinh_t hs[], int size)
+void xuat_bang(HocSinh_t hs[])
 {
     printf("\r\n+----+-----------------------+-----------+----+------+-------+-----------+\r\n");
     printf("| TT | Ho va ten             | Gioi tinh | KV | Nhom | Tong  |  Ket qua  |\r\n");
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < MAX; i++)
     {
         printf("+----+-----------------------+-----------+----+------+-------+-----------+\r\n");
         printf("| %2d |", i + 1);
@@ -333,12 +331,12 @@ int main()
         case 1:
             nhap_ds(a);
             printf("\t\t danh sach vua nhap la: \r\n");
-            xuat_bang(a, SIZE(a));
+            xuat_bang(a);
             break;
         case 2:
             printf("\r\n\t\t Danh sach sap xep theo thu tu giam dan la: \r\n");
             sapXep(a);
-            xuat_bang(a, SIZE(a));
+            xuat_bang(a);
             break;
         case 3:
             printf("\r\n\t\t Danh sach trung tuyen la: \r\n");
@@ -351,11 +349,11 @@ int main()
             printf("OK\nDA LUU\r\n");
             break;
         case 5:
-            printf("\t\t Danh sach trung tuyen trong file dau.txt \r\n");
+            printf("\t\t Danh sach dau trong file dau.txt \r\n");
             docFile(data_dau, "D:\\BaitapC\\dau.txt");
             locData(data_dau, "nam");
             printf("\r\n");
-            printf("\t\t Danh sach trung rot trong file rot.txt \r\n");
+            printf("\t\t Danh sach rot trong file rot.txt \r\n");
             docFile(data_rot, "D:\\BaitapC\\rot.txt");
             locData(data_rot, "nu");
             printf("\r\n");
@@ -363,7 +361,6 @@ int main()
         case 6:
             check = 0;
             break;
-        
         }
     }
     
