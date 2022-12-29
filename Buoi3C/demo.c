@@ -3,12 +3,13 @@
 #include<string.h>
 #include<Windows.h>
 
-#define MAX 2
+#define MAX 10
 #define SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 
 typedef enum {
 	rot = 0, dau = 1, khongCo = 3
 } kq_t;
+
 typedef struct HocSinh
 {
 	char ten[20];
@@ -95,7 +96,7 @@ void chen_kc(char str1[], int size)
     }
 }
 
-HocSinh_t set_hs(char ten[], char gt[], int kv, int nh, float dt)
+HocSinh_t set_hs(char ten[20], char gt[4], int kv, int nh, float dt)
 {
     HocSinh_t kq;
     strcpy(kq.ten, ten);
@@ -132,7 +133,6 @@ void nhap_hs(HocSinh_t *hs)
     scanf("%f", &hs->td);
     hs->kq = check_kq(*hs);
 }
-
 void nhap_ds(HocSinh_t hs[])
 {
     printf("\r\n------------------------------------------\r\n");
@@ -144,7 +144,6 @@ void nhap_ds(HocSinh_t hs[])
     }
     printf("\r\n------------------------------------------\r\n");
 }
-
 void xuat_1_hang(HocSinh_t hs)
 {
     
@@ -172,11 +171,11 @@ void xuat_1_hang(HocSinh_t hs)
     }
 }
 
-void xuat_bang(HocSinh_t hs[])
+void xuat_bang(HocSinh_t hs[], int size)
 {
     printf("\r\n+----+-----------------------+-----------+----+------+-------+-----------+\r\n");
     printf("| TT | Ho va ten             | Gioi tinh | KV | Nhom | Tong  |  Ket qua  |\r\n");
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < size; i++)
     {
         printf("+----+-----------------------+-----------+----+------+-------+-----------+\r\n");
         printf("| %2d |", i + 1);
@@ -265,7 +264,8 @@ void menu()
     printf("\t2. Xuat danh sach sap xep theo thu tu giam dan. \r\n");
     printf("\t3. Xuat danh sach trung tuyen\r\n");
     printf("\t4. Luu file dau va rot. \r\n");
-    printf("\t5. Ket thuc. \r\n");
+    printf("\t5. Doc file dau va rot. \r\n");
+    printf("\t6. Ket thuc. \r\n");
 }
 
 void ghifile(HocSinh_t hs[], const char* soure, int size)
@@ -273,17 +273,49 @@ void ghifile(HocSinh_t hs[], const char* soure, int size)
     FILE* f = fopen(soure, "w");
     for (int i = 0; i < size; i++)
     {
-        fprintf(f, " %d - %s\t\t - %s \t - %d - %d - %.2f - %d\n", i + 1, hs[i].ten, hs[i].gt, hs[i].kv, hs[i].nh, hs[i].td, hs[i].kq);
+        fprintf(f, "%d, %s, %s, %d, %d, %.2f, %d\n", i, hs[i].ten, hs[i].gt, hs[i].kv, hs[i].nh, hs[i].td, hs[i].kq);
     }
     fclose(f);
+}
+
+void docFile(HocSinh_t hs[], const char* src)
+{
+    FILE* fp = fopen(src, "r");
+    char buffer[255];
+    int i = 0;
+    int d;
+    while (fgets(buffer, 255, fp) != NULL)
+    {
+        // printf("%s", buffer);
+        sscanf(buffer, "%d, %[^,], %[^,], %d, %d, %f, %d\n", &d, &hs[i].ten, &hs[i].gt, &hs[i].kv, &hs[i].nh, &hs[i].td, &hs[i].kq);
+        printf("%d, %s, %s, %d, %d, %.2f, %d\n", i, hs[i].ten, hs[i].gt, hs[i].kv, hs[i].nh, hs[i].td, hs[i].kq);
+        i++;
+    }
+
+    fclose(fp);
+}
+
+void locData(HocSinh_t hs[], const char* gioiTinh)
+{
+    printf("\n DS Sach Loc theo gioi tinh: %s \r\n", gioiTinh);
+    for(int i = 0; i < 10; i++)
+    {
+        if(strcmp(hs[i].gt, gioiTinh) == 0)
+        {
+            printf("%d, %s, %s, %d, %d, %.2f, %d\n", i, hs[i].ten, hs[i].gt, hs[i].kv, hs[i].nh, hs[i].td, hs[i].kq);
+        }
+    }
 }
 
 int main()
 {
     HocSinh_t a[10] = { 0 };
+
     HocSinh_t ds_dau[10] = { 0 };
     HocSinh_t ds_rot[10] = { 0 };
 
+    HocSinh_t data_dau[10] = { 0 };
+    HocSinh_t data_rot[10] = { 0 };
     int soDau = 0;
     int soRot = 0;
 
@@ -293,7 +325,7 @@ int main()
     {
         menu();
         int key;
-        printf("\t\tNhap chuc nang: ");
+        printf("\t\t\tNhap chuc nang: ");
         scanf("%d", &key);
         system("cls");
         switch (key)
@@ -301,12 +333,12 @@ int main()
         case 1:
             nhap_ds(a);
             printf("\t\t danh sach vua nhap la: \r\n");
-            xuat_bang(a);
+            xuat_bang(a, SIZE(a));
             break;
         case 2:
             printf("\r\n\t\t Danh sach sap xep theo thu tu giam dan la: \r\n");
             sapXep(a);
-            xuat_bang(a);
+            xuat_bang(a, SIZE(a));
             break;
         case 3:
             printf("\r\n\t\t Danh sach trung tuyen la: \r\n");
@@ -314,15 +346,24 @@ int main()
             break;
         case 4:
             ds_Dau_Rot(a, ds_dau, ds_rot, &soDau, &soRot);
-
             ghifile(ds_dau, "D:\\BaitapC\\dau.txt", soDau);
             ghifile(ds_rot, "D:\\BaitapC\\rot.txt", soRot);
+            printf("OK\nDA LUU\r\n");
             break;
         case 5:
+            printf("\t\t Danh sach trung tuyen trong file dau.txt \r\n");
+            docFile(data_dau, "D:\\BaitapC\\dau.txt");
+            locData(data_dau, "nam");
+            printf("\r\n");
+            printf("\t\t Danh sach trung rot trong file rot.txt \r\n");
+            docFile(data_rot, "D:\\BaitapC\\rot.txt");
+            locData(data_rot, "nu");
+            printf("\r\n");
+            break;
+        case 6:
             check = 0;
             break;
-        default:
-            break;
+        
         }
     }
     
