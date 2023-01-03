@@ -11,9 +11,6 @@
 
 int sau = 0b1;
 int yc1_led = 0;
-int yc2_led = 0;
-int yc3_led = 0;
-
 int cnt3 = 0;
 int cnt2 = 0;
 
